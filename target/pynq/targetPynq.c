@@ -12,6 +12,9 @@
 #include "common/stypes.h"
 
 #include "stdio.h"
+
+//#include "invcontrol.h"
+#include "invsfb.h"
 //=============================================================================
 
 //=============================================================================
@@ -23,13 +26,13 @@
 //=============================================================================
 /*--------------------------------- Globals ---------------------------------*/
 //=============================================================================
-stypesMeasurements_t xtMeasurements;
-stypesSimData_t xtSimData;
-stypesControl_t xtControl;
-stypesControllerData_t xtControllerData;
+static stypesMeasurements_t xtMeasurements;
+static stypesSimData_t xtSimData;
+static stypesControl_t xtControl;
+static stypesControllerData_t xtControllerData;
 
-float k1 = (float)(3.3595991e+07);
-float k2 = (float)(8.0000000e+03);
+static float k1 = (float)(3.3595991e+07);
+static float k2 = (float)(8.0000000e+03);
 //=============================================================================
 
 //=============================================================================
@@ -66,9 +69,12 @@ int32_t targetPynqUpdateSimData(void *simData, int32_t size){
 //-----------------------------------------------------------------------------
 void targetPynqRunControl(void){
 
-	xtControl.u = k1 * xtSimData.ref - k1 * xtMeasurements.y - k2 * xtMeasurements.y_dot;
+	invcontrol(&xtMeasurements, &xtSimData, &xtControl, &xtControllerData);
+	//invsfb(&xtMeasurements, &xtSimData, &xtControl, &xtControllerData);
 
-	xtControllerData.t_exec = 5.03f;
+//	xtControl.u = k1 * xtSimData.ref - k1 * xtMeasurements.y - k2 * xtMeasurements.y_dot;
+//
+//	xtControllerData.t_exec = 5.03f;
 }
 //-----------------------------------------------------------------------------
 int32_t targetPynqGetControl(void **control){

@@ -22,10 +22,10 @@
 //=============================================================================
 /*--------------------------------- Globals ---------------------------------*/
 //=============================================================================
-stypesMeasurements_t xhMeasurements;
-stypesSimData_t xhSimData;
-stypesControl_t xhControl;
-stypesControllerData_t xhControllerData;
+static stypesMeasurements_t xhMeasurements;
+static stypesSimData_t xhSimData;
+static stypesControl_t xhControl;
+static stypesControllerData_t xhControllerData;
 //=============================================================================
 
 //=============================================================================

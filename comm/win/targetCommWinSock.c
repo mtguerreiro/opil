@@ -26,10 +26,10 @@
 //=============================================================================
 /*--------------------------------- Globals ---------------------------------*/
 //=============================================================================
-WSADATA wsaData;
-SOCKET server_socket = INVALID_SOCKET, client_socket = INVALID_SOCKET;
-struct sockaddr_in server_addr, client_addr;
-int client_len;
+static WSADATA wsaData;
+static SOCKET server_socket = INVALID_SOCKET, client_socket = INVALID_SOCKET;
+static struct sockaddr_in server_addr, client_addr;
+static int client_len;
 
 //=============================================================================
 
