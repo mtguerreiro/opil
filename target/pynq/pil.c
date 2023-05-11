@@ -48,6 +48,9 @@ void pil(void *param){
 	while(1){
 		if( opiltargetConnectToHost(0) != 0 ) continue;
 
+		/* Where should we place this? */
+		targetPynqInitialize(0);
+
 		while( opiltargetExchangeDataHost() == 0 );
 
 		opiltargetDisconnectFromHost(0);

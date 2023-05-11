@@ -13,8 +13,8 @@
 
 #include "stdio.h"
 
-//#include "invcontrol.h"
-#include "invsfb.h"
+#include "invcontrol.h"
+//#include "invsfb.h"
 //=============================================================================
 
 //=============================================================================
@@ -41,6 +41,7 @@ static float k2 = (float)(8.0000000e+03);
 //-----------------------------------------------------------------------------
 void targetPynqInitialize(void *params){
 
+	invcontrolInitialize();
 }
 //-----------------------------------------------------------------------------
 int32_t targetPynqUpdateMeasurements(void *meas, int32_t size){
