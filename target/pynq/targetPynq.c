@@ -8,13 +8,12 @@
 //=============================================================================
 /*-------------------------------- Includes ---------------------------------*/
 //=============================================================================
-#include "target/pynq/targetPynq.h"
+#include "targetPynq.h"
 #include "common/stypes.h"
 
 #include "stdio.h"
 
 #include "invcontrol.h"
-//#include "invsfb.h"
 //=============================================================================
 
 //=============================================================================
@@ -30,16 +29,13 @@ static stypesMeasurements_t xtMeasurements;
 static stypesSimData_t xtSimData;
 static stypesControl_t xtControl;
 static stypesControllerData_t xtControllerData;
-
-static float k1 = (float)(3.3595991e+07);
-static float k2 = (float)(8.0000000e+03);
 //=============================================================================
 
 //=============================================================================
 /*-------------------------------- Functions --------------------------------*/
 //=============================================================================
 //-----------------------------------------------------------------------------
-void targetPynqInitialize(void *params){
+void targetPynqInitialize(void){
 
 	invcontrolInitialize();
 }
@@ -71,11 +67,6 @@ int32_t targetPynqUpdateSimData(void *simData, int32_t size){
 void targetPynqRunControl(void){
 
 	invcontrol(&xtMeasurements, &xtSimData, &xtControl, &xtControllerData);
-	//invsfb(&xtMeasurements, &xtSimData, &xtControl, &xtControllerData);
-
-//	xtControl.u = k1 * xtSimData.ref - k1 * xtMeasurements.y - k2 * xtMeasurements.y_dot;
-//
-//	xtControllerData.t_exec = 5.03f;
 }
 //-----------------------------------------------------------------------------
 int32_t targetPynqGetControl(void **control){

@@ -28,7 +28,10 @@ typedef int32_t (*otCommReceiveData_t)(void *buffer, int32_t size);
 
 typedef int32_t (*otUpdateMeas_t)(void *meas, int32_t size);
 typedef int32_t (*otUpdateSimData_t)(void *simData, int32_t size);
+
+typedef void (*otInitControl_t)(void);
 typedef void (*otRunControl_t)(void);
+
 typedef int32_t (*otGetControl_t)(void **control);
 typedef int32_t (*otGetControllerData_t)(void **controllerData);
 
@@ -43,6 +46,7 @@ typedef struct{
 	otUpdateMeas_t updateMeas;
 	otUpdateSimData_t updateSimData;
 
+	otInitControl_t initControl;
 	otRunControl_t runControl;
 
 	otGetControl_t getControl;

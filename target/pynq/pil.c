@@ -8,7 +8,7 @@
 //=============================================================================
 /*-------------------------------- Includes ---------------------------------*/
 //=============================================================================
-#include <target/pynq/pil.h>
+#include "pil.h"
 
 #include "FreeRTOS.h"
 #include "task.h"
@@ -48,9 +48,6 @@ void pil(void *param){
 	while(1){
 		if( opiltargetConnectToHost(0) != 0 ) continue;
 
-		/* Where should we place this? */
-		targetPynqInitialize(0);
-
 		while( opiltargetExchangeDataHost() == 0 );
 
 		opiltargetDisconnectFromHost(0);
@@ -65,6 +62,10 @@ void pil(void *param){
 //-----------------------------------------------------------------------------
 static void pilInitialize(void){
 
+	/* Creates the server socket */
+	if( targetCommPynqInitialize() != 0 )
+		vTaskDelay(2000 / portTICK_PERIOD_MS);
+
 	/* Initializes opil */
 	opiltargetCommConfig_t comm;
 	opiltargetControlConfig_t control;
@@ -76,16 +77,14 @@ static void pilInitialize(void){
 
 	control.updateMeas = targetPynqUpdateMeasurements;
 	control.updateSimData = targetPynqUpdateSimData;
+
+	control.initControl = targetPynqInitialize;
 	control.runControl = targetPynqRunControl;
+
 	control.getControl = targetPynqGetControl;
 	control.getControllerData = targetPynqGetControllerData;
 
 	opiltargetInitialize(&comm, &control);
-
-	/* Creates the server socket */
-	if( targetCommPynqInitialize() != 0 )
-		vTaskDelay(2000 / portTICK_PERIOD_MS);
-
 }
 //-----------------------------------------------------------------------------
 //=============================================================================

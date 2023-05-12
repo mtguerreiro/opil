@@ -24,6 +24,7 @@ typedef struct{
 	otUpdateMeas_t updateMeas;
 	otUpdateSimData_t updateSimData;
 
+	otInitControl_t initControl;
 	otRunControl_t runControl;
 
 	otGetControl_t getControl;
@@ -57,6 +58,7 @@ int32_t opiltargetInitialize(
 	xotControl.updateMeas = controlConfig->updateMeas;
 	xotControl.updateSimData = controlConfig->updateSimData;
 
+	xotControl.initControl = controlConfig->initControl;
 	xotControl.runControl = controlConfig->runControl;
 
 	xotControl.getControl = controlConfig->getControl;
@@ -67,7 +69,13 @@ int32_t opiltargetInitialize(
 //-----------------------------------------------------------------------------
 int32_t opiltargetConnectToHost(void *params){
 
-	return xotControl.openConn(params);
+	int32_t status;
+
+	status = xotControl.openConn(params);
+
+	if( status == 0 ) xotControl.initControl();
+
+	return status;
 }
 //-----------------------------------------------------------------------------
 int32_t opiltargetExchangeDataHost(void){
