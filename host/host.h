@@ -1,12 +1,12 @@
 /*
- * targetTemplate.h
+ * host.h
  *
- *  Created on: 6 de mai de 2023
+ *  Created on: 12.05.2023
  *      Author: LRS
  */
 
-#ifndef TARGET_TEMPLATE_H_
-#define TARGET_TEMPLATE_H_
+#ifndef HOST_H_
+#define HOST_H_
 
 //=============================================================================
 /*-------------------------------- Includes ---------------------------------*/
@@ -26,19 +26,22 @@
 /*-------------------------------- Functions --------------------------------*/
 //=============================================================================
 //-----------------------------------------------------------------------------
-void targetTemplateInitialize(void *params);
+void hostInitialize(
+		void *meas, void *simData,
+		void *control, void *controllerData);
 //-----------------------------------------------------------------------------
-int32_t targetTemplateUpdateMeasurements(void *meas, int32_t size);
+void hostUpdateSimulation(void);
 //-----------------------------------------------------------------------------
-int32_t targetTemplateUpdateSimData(void *simData, int32_t size);
+int32_t hostGetMeasurements(void **meas);
 //-----------------------------------------------------------------------------
-void targetTemplateRunControl(void);
+int32_t hostGetSimData(void **simData);
 //-----------------------------------------------------------------------------
-int32_t targetTemplateGetControl(void **control);
+int32_t hostUpdateControl(void *control, int32_t size);
 //-----------------------------------------------------------------------------
-int32_t targetTemplateGetControllerData(void **controllerData);
+int32_t hostUpdateControllerData(void *controllerData, int32_t size);
+//-----------------------------------------------------------------------------
+void hostApplyControl(void);
 //-----------------------------------------------------------------------------
 //=============================================================================
 
-
-#endif /* TARGET_TEMPLATE_H_ */
+#endif /* HOST_H_ */

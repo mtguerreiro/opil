@@ -1,5 +1,5 @@
 /*
- * hostPlecs.c
+ * host.c
  *
  *  Created on: 06.05.2023
  *      Author: LRS
@@ -8,7 +8,7 @@
 //=============================================================================
 /*-------------------------------- Includes ---------------------------------*/
 //=============================================================================
-#include "hostPlecs.h"
+#include "host.h"
 #include "../common/stypes.h"
 
 //=============================================================================
@@ -27,57 +27,57 @@ static stypesSimData_t xhSimData;
 static stypesControl_t xhControl;
 static stypesControllerData_t xhControllerData;
 
-static void *vplecsMeas;
-static void *vplecsSimData;
-static void *vplecsControl;
-static void *vplecsControllerData;
+static void *vMeas;
+static void *vSimData;
+static void *vControl;
+static void *vControllerData;
 //=============================================================================
 
 //=============================================================================
 /*-------------------------------- Functions --------------------------------*/
 //=============================================================================
 //-----------------------------------------------------------------------------
-void hostPlecsInitialize(
+void hostInitialize(
 		void *meas, void *simData,
 		void *control, void *controllerData){
 
-	vplecsMeas = meas;
-	vplecsSimData = simData;
-	vplecsControl = control;
-	vplecsControllerData = controllerData;
+	vMeas = meas;
+	vSimData = simData;
+	vControl = control;
+	vControllerData = controllerData;
 }
 //-----------------------------------------------------------------------------
-void hostPlecsUpdateSimulation(void){
+void hostUpdateSimulation(void){
 
 	uint8_t *dst, *src;
 	uint32_t k;
 
-	src = (uint8_t *)( vplecsMeas );
+	src = (uint8_t *)( vMeas );
 	dst = (uint8_t *)( &xhMeasurements );
 	k = sizeof(stypesMeasurements_t);
 	while(k--) *dst++ = *src++;
 
-	src = (uint8_t *)( vplecsSimData );
+	src = (uint8_t *)( vSimData );
 	dst = (uint8_t *)( &xhSimData );
 	k = sizeof(stypesSimData_t);
 	while(k--) *dst++ = *src++;
 }
 //-----------------------------------------------------------------------------
-int32_t hostPlecsGetMeasurements(void **meas){
+int32_t hostGetMeasurements(void **meas){
 
 	*meas = (void *)( &xhMeasurements );
 
 	return sizeof(stypesMeasurements_t);
 }
 //-----------------------------------------------------------------------------
-int32_t hostPlecsGetSimData(void **simData){
+int32_t hostGetSimData(void **simData){
 
 	*simData = (void *)( &xhSimData );
 
 	return sizeof(stypesSimData_t);
 }
 //-----------------------------------------------------------------------------
-int32_t hostPlecsUpdateControl(void *control, int32_t size){
+int32_t hostUpdateControl(void *control, int32_t size){
 
 	uint8_t *src, *dst;
 
@@ -89,7 +89,7 @@ int32_t hostPlecsUpdateControl(void *control, int32_t size){
 	return 0;
 }
 //-----------------------------------------------------------------------------
-int32_t hostPlecsUpdateControllerData(void *controllerData, int32_t size){
+int32_t hostUpdateControllerData(void *controllerData, int32_t size){
 
 	uint8_t *src, *dst;
 
@@ -101,17 +101,17 @@ int32_t hostPlecsUpdateControllerData(void *controllerData, int32_t size){
 	return 0;
 }
 //-----------------------------------------------------------------------------
-void hostPlecsApplyControl(void){
+void hostApplyControl(void){
 
 	uint8_t *src, *dst;
 	uint32_t k;
 
-	dst = (uint8_t *)( vplecsControl );
+	dst = (uint8_t *)( vControl );
 	src = (uint8_t *)( &xhControl );
 	k = sizeof(stypesControl_t);
 	while(k--) *dst++ = *src++;
 
-	dst = (uint8_t *)( vplecsControllerData );
+	dst = (uint8_t *)( vControllerData );
 	src = (uint8_t *)( &xhControllerData );
 	k = sizeof(stypesControllerData_t);
 	while(k--) *dst++ = *src++;

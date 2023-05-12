@@ -17,7 +17,7 @@
 //=============================================================================
 /*------------------------------- Definitions -------------------------------*/
 //=============================================================================
-#define HOST_COMM_WIN_SOCK_SERVER_IP		"127.0.0.1"
+#define HOST_COMM_WIN_SOCK_SERVER_IP		"131.246.75.251"
 #define HOST_COMM_WIN_SOCK_SERVER_PORT		8080
 #define HOST_COMM_WIN_SOCK_BUFFER_SIZE		512
 

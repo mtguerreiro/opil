@@ -8,6 +8,7 @@
 //=============================================================================
 /*-------------------------------- Includes ---------------------------------*/
 //=============================================================================
+#include "target/target.h"
 #include "pil.h"
 
 #include "FreeRTOS.h"
@@ -15,7 +16,6 @@
 
 /* OPiL */
 #include "opiltarget.h"
-#include "target/pynq/targetPynq.h"
 #include "comm/pynq/targetCommPynqSock.h"
 //=============================================================================
 
@@ -75,14 +75,14 @@ static void pilInitialize(void){
 	comm.sendData = targetCommPynqSockSendData;
 	comm.receiveData = targetCommPynqSockReceiveData;
 
-	control.updateMeas = targetPynqUpdateMeasurements;
-	control.updateSimData = targetPynqUpdateSimData;
+	control.updateMeas = targetUpdateMeasurements;
+	control.updateSimData = targetUpdateSimData;
 
-	control.initControl = targetPynqInitialize;
-	control.runControl = targetPynqRunControl;
+	control.initControl = targetInitialize;
+	control.runControl = targetRunControl;
 
-	control.getControl = targetPynqGetControl;
-	control.getControllerData = targetPynqGetControllerData;
+	control.getControl = targetGetControl;
+	control.getControllerData = targetGetControllerData;
 
 	opiltargetInitialize(&comm, &control);
 }

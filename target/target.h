@@ -1,12 +1,12 @@
 /*
- * hostPlecs.h
+ * targetPynq.h
  *
- *  Created on: 06.05.2023
+ *  Created on: 8 de mai de 2023
  *      Author: LRS
  */
 
-#ifndef HOST_PLECS_H_
-#define HOST_PLECS_H_
+#ifndef TARGET_PYNQ_H_
+#define TARGET_PYNQ_H_
 
 //=============================================================================
 /*-------------------------------- Includes ---------------------------------*/
@@ -26,22 +26,19 @@
 /*-------------------------------- Functions --------------------------------*/
 //=============================================================================
 //-----------------------------------------------------------------------------
-void hostPlecsInitialize(
-		void *meas, void *simData,
-		void *control, void *controllerData);
+void targetInitialize(void);
 //-----------------------------------------------------------------------------
-void hostPlecsUpdateSimulation(void);
+int32_t targetUpdateMeasurements(void *meas, int32_t size);
 //-----------------------------------------------------------------------------
-int32_t hostPlecsGetMeasurements(void **meas);
+int32_t targetUpdateSimData(void *simData, int32_t size);
 //-----------------------------------------------------------------------------
-int32_t hostPlecsGetSimData(void **simData);
+void targetRunControl(void);
 //-----------------------------------------------------------------------------
-int32_t hostPlecsUpdateControl(void *control, int32_t size);
+int32_t targetGetControl(void **control);
 //-----------------------------------------------------------------------------
-int32_t hostPlecsUpdateControllerData(void *controllerData, int32_t size);
-//-----------------------------------------------------------------------------
-void hostPlecsApplyControl(void);
+int32_t targetGetControllerData(void **controllerData);
 //-----------------------------------------------------------------------------
 //=============================================================================
 
-#endif /* HOST_PLECS_H_ */
+
+#endif /* TARGET_H_ */
