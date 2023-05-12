@@ -1,12 +1,12 @@
 /*
- * targetPynq.h
+ * target.h
  *
  *  Created on: 8 de mai de 2023
  *      Author: LRS
  */
 
-#ifndef TARGET_PYNQ_H_
-#define TARGET_PYNQ_H_
+#ifndef TARGET_H_
+#define TARGET_H_
 
 //=============================================================================
 /*-------------------------------- Includes ---------------------------------*/
@@ -39,6 +39,5 @@ int32_t targetGetControl(void **control);
 int32_t targetGetControllerData(void **controllerData);
 //-----------------------------------------------------------------------------
 //=============================================================================
-
 
 #endif /* TARGET_H_ */

@@ -1,5 +1,5 @@
 /*
- * host.h
+ * hostPlecsConfig.h
  *
  *  Created on: 12.05.2023
  *      Author: LRS
@@ -17,4 +17,4 @@
 #define HOST_PLECS_CONFIG_CONTROLLER_SIZE		3
 //=============================================================================
 
-#endif /* HOST_H_ */
+#endif /* HOST_PLECS_CONFIG_H_ */
