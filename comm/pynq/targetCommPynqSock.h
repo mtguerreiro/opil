@@ -32,23 +32,42 @@
 /*-------------------------------- Functions --------------------------------*/
 //=============================================================================
 //-----------------------------------------------------------------------------
-/** @brief Initializes the server socket.
+/**
+ * @brief Initializes the server socket.
  */
 int32_t targetCommPynqInitialize(void);
 //-----------------------------------------------------------------------------
-/** @brief Waits for a client connection.
+/**
+ * @brief Waits for a client connection.
+ *
+ * @param params Not used, can be given as 0 or NULL.
+ * @return 0 if socket was opened successfully, otherwise an error code.
  */
 int32_t targetCommPynqSockOpenConnection(void *params);
 //-----------------------------------------------------------------------------
-/** @brief Closes the client socket.
+/**
+ * @brief Closes the client socket.
+ *
+ * @param params Not used, can be given as 0 or NULL.
+ * @return 0 if socket was closed successfully, an error code otherwise.
  */
 int32_t targetCommPynqSockCloseConnection(void *params);
 //-----------------------------------------------------------------------------
-/** @brief Sends data to the client socket.
+/**
+ * @brief Sends data to the client socket.
+ *
+ * @param buffer Pointer to buffer holding data to be sent.
+ * @param size Size of buffer, in bytes.
+ * @return 0 if data was sent successfully, an error code otherwise.
  */
 int32_t targetCommPynqSockSendData(void *buffer, int32_t size);
 //-----------------------------------------------------------------------------
-/* @brief Receives data from the client socket.
+/**
+ * @brief Receives data from the client socket.
+ *
+ * @param buffer Pointer to buffer to hold data.
+ * @param size Number of bytes to receive.
+ * @return 0 if data was received successfully, an error code otherwise.
  */
 int32_t targetCommPynqSockReceiveData(void *buffer, int32_t size);
 //-----------------------------------------------------------------------------
