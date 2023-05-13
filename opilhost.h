@@ -21,13 +21,12 @@
 //=============================================================================
 //-----------------------------------------------------------------------------
 /**
- * Size of buffer used to temporarily store received data.
- * The size is in bytes.
+ * @brief Size of buffer used to temporarily store received data (in bytes).
  */
 #define OPIL_HOST_CONFIG_BUFFER_SIZE	512
 //-----------------------------------------------------------------------------
 /**
- * Signature of function to open a target connection.
+ * @brief Signature of function to open a target connection.
  *
  * @param params Generic parameters to be passed to the function.
  * @return The function should return 0 if the connection was successful.
@@ -35,7 +34,7 @@
 typedef int32_t (*ohCommOpenConn_t)(void *params);
 //-----------------------------------------------------------------------------
 /**
- * Signature of function to close a target connection.
+ * @brief Signature of function to close a target connection.
  *
  * @param params Generic parameters to be passed to the function.
  * @return The function should return 0 if the disconnection was successful.
@@ -43,7 +42,7 @@ typedef int32_t (*ohCommOpenConn_t)(void *params);
 typedef int32_t (*ohCommCloseConn_t)(void *params);
 //-----------------------------------------------------------------------------
 /**
- * Signature of function to send data to the target.
+ * @brief Signature of function to send data to the target.
  *
  * @param buffer Pointer to buffer holding data to be sent.
  * @param size Size of buffer, in bytes.
@@ -52,7 +51,7 @@ typedef int32_t (*ohCommCloseConn_t)(void *params);
 typedef int32_t (*ohCommSendData_t)(void *buffer, int32_t size);
 //-----------------------------------------------------------------------------
 /**
- * Signature of function to receive data from the target.
+ * @brief Signature of function to receive data from the target.
  *
  * @param buffer Pointer to buffer to hold data.
  * @param size Number of bytes to receive.
@@ -61,7 +60,7 @@ typedef int32_t (*ohCommSendData_t)(void *buffer, int32_t size);
 typedef int32_t (*ohCommReceiveData_t)(void *buffer, int32_t size);
 //-----------------------------------------------------------------------------
 /**
- * Signature of function to update simulation data.
+ * @brief Signature of function to update simulation data.
  *
  * This function essentially copies the outside data into the internal
  * structures.
@@ -69,7 +68,7 @@ typedef int32_t (*ohCommReceiveData_t)(void *buffer, int32_t size);
 typedef void (*ohUpdateSim_t)(void);
 //-----------------------------------------------------------------------------
 /**
- * Signature of function to get the measurements data.
+ * @brief Signature of function to get the measurements data.
  *
  * @param meas Address of pointer where the address of the measurements data
  * 			   should be written to.
@@ -78,7 +77,7 @@ typedef void (*ohUpdateSim_t)(void);
 typedef int32_t (*ohGetMeas_t)(void **meas);
 //-----------------------------------------------------------------------------
 /**
- * Signature of function to get the (additional) simulation data.
+ * @brief Signature of function to get the (additional) simulation data.
  *
  * @param simdata Address of pointer where the address of the simulation data
  * 			      should be written to.
@@ -87,18 +86,18 @@ typedef int32_t (*ohGetMeas_t)(void **meas);
 typedef int32_t (*ohGetSimData_t)(void **simdata);
 //-----------------------------------------------------------------------------
 /**
- * Signature of function to write the control data.
+ * @brief Signature of function to write the control data.
  *
- * @param control Address of where the control data is located.
+ * @param control Pointer to the control data.
  * @param size Size of control data, in bytes.
  * @return Should return 0 if control data was updated successfully.
  */
 typedef int32_t (*ohUpdateControl_t)(void *control, int32_t size);
 //-----------------------------------------------------------------------------
 /**
- * Signature of function to write the controller data.
+ * @brief Signature of function to write the controller data.
  *
- * @param controllerdata Address of where the controller data is located.
+ * @param controllerdata Pointer to the controller data.
  * @param size Size of controller data, in bytes.
  * @return Should return 0 if controller data was updated successfully.
  */
@@ -111,7 +110,7 @@ typedef int32_t (*ohUpdateControllerData_t)(void *controllerdata, int32_t size);
 typedef void (*ohApplyControl_t)(void);
 //-----------------------------------------------------------------------------
 /**
- * @brief Communication settings.
+ * @brief Host communication settings.
  *
  * Config structure to set the callbacks for host communication.
  */
