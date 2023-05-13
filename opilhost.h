@@ -21,9 +21,38 @@
 //=============================================================================
 #define OPIL_HOST_CONFIG_BUFFER_SIZE	512
 
+/**
+ * Signature of function to open a target connection.
+ *
+ * @param params Generic parameters to be passed to the function.
+ * @return The function should return 0 if the connection was successful.
+ */
 typedef int32_t (*ohCommOpenConn_t)(void *params);
+
+/**
+ * Signature of function to close a target connection.
+ *
+ * @param params Generic parameters to be passed to the function.
+ * @return The function should return 0 if the disconnection was successful.
+ */
 typedef int32_t (*ohCommCloseConn_t)(void *params);
+
+/**
+ * Signature of function to send data to the target.
+ *
+ * @param buffer Pointer to buffer holding data to be sent.
+ * @param size Size of buffer, in bytes.
+ * @return The function should return 0 if data was sent successfully.
+ */
 typedef int32_t (*ohCommSendData_t)(void *buffer, int32_t size);
+
+/**
+ * Signature of function to receive data from the target.
+ *
+ * @param buffer Pointer to buffer to hold data.
+ * @param size Number of bytes to receive.
+ * @return The function should return 0 if data was received successfully.
+ */
 typedef int32_t (*ohCommReceiveData_t)(void *buffer, int32_t size);
 
 typedef void (*ohUpdateSim_t)(void);
