@@ -32,10 +32,25 @@
 /*-------------------------------- Functions --------------------------------*/
 //=============================================================================
 //-----------------------------------------------------------------------------
+/**
+ * @brief Initializes and opens the client socket.
+ *
+ * @param params Not used, can be given as 0 or NULL.
+ * @return 0 if socket was opened successfully.
+ */
 int32_t hostCommWinSockOpenConnection(void *params);
 //-----------------------------------------------------------------------------
+/**
+ * @brief Closes the client socket previously opened.
+ *
+ * @param params Not used, can be given as 0 or NULL.
+ * @return 0 if socket was closed successfully.
+ */
 int32_t hostCommWinSockCloseConnection(void *params);
 //-----------------------------------------------------------------------------
+/**
+ *
+ */
 int32_t hostCommWinSockSendData(void *buffer, int32_t size);
 //-----------------------------------------------------------------------------
 int32_t hostCommWinSockReceiveData(void *buffer, int32_t size);

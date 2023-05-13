@@ -19,8 +19,13 @@
 //=============================================================================
 /*------------------------------- Definitions -------------------------------*/
 //=============================================================================
+//-----------------------------------------------------------------------------
+/**
+ * Size of buffer used to temporarily store received data.
+ * The size is in bytes.
+ */
 #define OPIL_HOST_CONFIG_BUFFER_SIZE	512
-
+//-----------------------------------------------------------------------------
 /**
  * Signature of function to open a target connection.
  *
@@ -28,7 +33,7 @@
  * @return The function should return 0 if the connection was successful.
  */
 typedef int32_t (*ohCommOpenConn_t)(void *params);
-
+//-----------------------------------------------------------------------------
 /**
  * Signature of function to close a target connection.
  *
@@ -36,7 +41,7 @@ typedef int32_t (*ohCommOpenConn_t)(void *params);
  * @return The function should return 0 if the disconnection was successful.
  */
 typedef int32_t (*ohCommCloseConn_t)(void *params);
-
+//-----------------------------------------------------------------------------
 /**
  * Signature of function to send data to the target.
  *
@@ -45,7 +50,7 @@ typedef int32_t (*ohCommCloseConn_t)(void *params);
  * @return The function should return 0 if data was sent successfully.
  */
 typedef int32_t (*ohCommSendData_t)(void *buffer, int32_t size);
-
+//-----------------------------------------------------------------------------
 /**
  * Signature of function to receive data from the target.
  *
@@ -54,7 +59,7 @@ typedef int32_t (*ohCommSendData_t)(void *buffer, int32_t size);
  * @return The function should return 0 if data was received successfully.
  */
 typedef int32_t (*ohCommReceiveData_t)(void *buffer, int32_t size);
-
+//-----------------------------------------------------------------------------
 typedef void (*ohUpdateSim_t)(void);
 typedef int32_t (*ohGetMeas_t)(void **meas);
 typedef int32_t (*ohGetSimData_t)(void **simdata);

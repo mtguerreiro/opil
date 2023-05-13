@@ -19,13 +19,47 @@
 //=============================================================================
 /*------------------------------- Definitions -------------------------------*/
 //=============================================================================
+//-----------------------------------------------------------------------------
+/**
+ * Size of buffer used to temporarily store received data.
+ * The size is in bytes.
+ */
 #define OPIL_TARGET_CONFIG_BUFFER_SIZE	512
-
+//-----------------------------------------------------------------------------
+/**
+ * Signature of function to open a host connection.
+ *
+ * @param params Generic parameters to be passed to the function.
+ * @return The function should return 0 if the connection was successful.
+ */
 typedef int32_t (*otCommOpenConn_t)(void *params);
+//-----------------------------------------------------------------------------
+/**
+ * Signature of function to close a host connection.
+ *
+ * @param params Generic parameters to be passed to the function.
+ * @return The function should return 0 if the disconnection was successful.
+ */
 typedef int32_t (*otCommCloseConn_t)(void *params);
+//-----------------------------------------------------------------------------
+/**
+ * Signature of function to send data to the host.
+ *
+ * @param buffer Pointer to buffer holding data to be sent.
+ * @param size Size of buffer, in bytes.
+ * @return The function should return 0 if data was sent successfully.
+ */
 typedef int32_t (*otCommSendData_t)(void *buffer, int32_t size);
+//-----------------------------------------------------------------------------
+/**
+ * Signature of function to receive data from the host.
+ *
+ * @param buffer Pointer to buffer to hold data.
+ * @param size Number of bytes to receive.
+ * @return The function should return 0 if data was received successfully.
+ */
 typedef int32_t (*otCommReceiveData_t)(void *buffer, int32_t size);
-
+//-----------------------------------------------------------------------------
 typedef int32_t (*otUpdateMeas_t)(void *meas, int32_t size);
 typedef int32_t (*otUpdateSimData_t)(void *simData, int32_t size);
 
