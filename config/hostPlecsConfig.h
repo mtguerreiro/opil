@@ -6,7 +6,7 @@
  */
 
 #ifndef HOST_PLECS_CONFIG_H_
-#define HOST_PLECS_CONFIG__H_
+#define HOST_PLECS_CONFIG_H_
 
 //=============================================================================
 /*------------------------------- Definitions -------------------------------*/
