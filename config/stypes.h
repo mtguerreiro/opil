@@ -50,7 +50,7 @@ typedef struct{
 typedef struct{
 	float theta;
 	float t_exec;
-	int32_t niters;
+	float niters;
 }stypesControllerData_t;
 //=============================================================================
 

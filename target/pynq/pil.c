@@ -17,6 +17,9 @@
 /* OPiL */
 #include "opiltarget.h"
 #include "comm/pynq/targetCommPynqSock.h"
+
+/* Control */
+#include "invcontrol.h"
 //=============================================================================
 
 //=============================================================================
@@ -66,6 +69,9 @@ static void pilInitialize(void){
 	if( targetCommPynqInitialize() != 0 )
 		vTaskDelay(2000 / portTICK_PERIOD_MS);
 
+	/* Initializes target */
+	targetInitialize(invcontrolInitialize, invcontrol);
+
 	/* Initializes opil */
 	opiltargetCommConfig_t comm;
 	opiltargetControlConfig_t control;
@@ -78,7 +84,7 @@ static void pilInitialize(void){
 	control.updateMeas = targetUpdateMeasurements;
 	control.updateSimData = targetUpdateSimData;
 
-	control.initControl = targetInitialize;
+	control.initControl = targetInitializeControl;
 	control.runControl = targetRunControl;
 
 	control.getControl = targetGetControl;

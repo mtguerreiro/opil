@@ -14,12 +14,19 @@
 #include "stdint.h"
 #include "stddef.h"
 
+#include "config/stypes.h"
 //=============================================================================
 
 //=============================================================================
 /*------------------------------- Definitions -------------------------------*/
 //=============================================================================
-
+typedef void (*targetControlInit_t)(void);
+typedef void (*targetControlRun_t)(
+		stypesMeasurements_t *meas,
+		stypesSimData_t *simData,
+		stypesControl_t *control,
+		stypesControllerData_t *controllerData
+		);
 //=============================================================================
 
 //=============================================================================
@@ -29,7 +36,9 @@
 /**
  * @brief Initializes the target.
  */
-void targetInitialize(void);
+void targetInitialize(
+		targetControlInit_t controlInit, targetControlRun_t controlRun
+		);
 //-----------------------------------------------------------------------------
 /**
  * @brief Updates measurements data.
@@ -52,6 +61,8 @@ int32_t targetUpdateMeasurements(void *meas, int32_t size);
  * @return Always returns 0.
  */
 int32_t targetUpdateSimData(void *simData, int32_t size);
+//-----------------------------------------------------------------------------
+void targetInitializeControl(void);
 //-----------------------------------------------------------------------------
 /**
  * @brief Runs the control algorithm.

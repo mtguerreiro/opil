@@ -8,21 +8,15 @@
 //=============================================================================
 /*-------------------------------- Includes ---------------------------------*/
 //=============================================================================
-#include "config/stypes.h"
 #include "target.h"
+
 #include "invcontrol.h"
 //=============================================================================
 
 //=============================================================================
 /*------------------------------- Definitions -------------------------------*/
 //=============================================================================
-typedef void (*targetControlInit_t)(void);
-typedef void (*targetControlRun_t)(
-		stypesMeasurements_t *meas,
-		stypesSimData_t *simData,
-		stypesControl_t *control,
-		stypesControllerData_t *controllerData
-		);
+
 //=============================================================================
 
 //=============================================================================
@@ -33,17 +27,20 @@ static stypesSimData_t xtSimData;
 static stypesControl_t xtControl;
 static stypesControllerData_t xtControllerData;
 
-static targetControlInit_t xcontrolInit = invcontrolInitialize;
-static targetControlRun_t xcontrolRun = invcontrol;
+static targetControlInit_t xcontrolInit = 0;
+static targetControlRun_t xcontrolRun = 0;
 //=============================================================================
 
 //=============================================================================
 /*-------------------------------- Functions --------------------------------*/
 //=============================================================================
 //-----------------------------------------------------------------------------
-void targetInitialize(void){
+void targetInitialize(
+		targetControlInit_t controlInit, targetControlRun_t controlRun
+		){
 
-	if( xcontrolInit ) xcontrolInit();
+	xcontrolInit = controlInit;
+	xcontrolRun = controlRun;
 }
 //-----------------------------------------------------------------------------
 int32_t targetUpdateMeasurements(void *meas, int32_t size){
@@ -68,6 +65,11 @@ int32_t targetUpdateSimData(void *simData, int32_t size){
 	while(size--) *dst++ = *src++;
 
 	return 0;
+}
+//-----------------------------------------------------------------------------
+void targetInitializeControl(void){
+
+	if( xcontrolInit ) xcontrolInit();
 }
 //-----------------------------------------------------------------------------
 void targetRunControl(void){
