@@ -1,5 +1,5 @@
 /*
- * host.c
+ * simif.c
  *
  *  Created on: 06.05.2023
  *      Author: LRS
@@ -8,7 +8,7 @@
 //=============================================================================
 /*-------------------------------- Includes ---------------------------------*/
 //=============================================================================
-#include "host.h"
+#include <simif/simif.h>
 #include "../config/stypes.h"
 
 //=============================================================================
@@ -37,7 +37,7 @@ static void *vControllerData;
 /*-------------------------------- Functions --------------------------------*/
 //=============================================================================
 //-----------------------------------------------------------------------------
-void hostInitialize(
+void simifInitialize(
 		void *meas, void *simData,
 		void *control, void *controllerData){
 
@@ -47,7 +47,7 @@ void hostInitialize(
 	vControllerData = controllerData;
 }
 //-----------------------------------------------------------------------------
-void hostUpdateSimulation(void){
+void simifUpdateSimulation(void){
 
 	uint8_t *dst, *src;
 	uint32_t k;
@@ -63,21 +63,21 @@ void hostUpdateSimulation(void){
 	while(k--) *dst++ = *src++;
 }
 //-----------------------------------------------------------------------------
-int32_t hostGetMeasurements(void **meas){
+int32_t simifGetMeasurements(void **meas){
 
 	*meas = (void *)( &xhMeasurements );
 
 	return sizeof(stypesMeasurements_t);
 }
 //-----------------------------------------------------------------------------
-int32_t hostGetSimData(void **simData){
+int32_t simifGetSimData(void **simData){
 
 	*simData = (void *)( &xhSimData );
 
 	return sizeof(stypesSimData_t);
 }
 //-----------------------------------------------------------------------------
-int32_t hostUpdateControl(void *control, int32_t size){
+int32_t simifUpdateControl(void *control, int32_t size){
 
 	uint8_t *src, *dst;
 
@@ -89,7 +89,7 @@ int32_t hostUpdateControl(void *control, int32_t size){
 	return 0;
 }
 //-----------------------------------------------------------------------------
-int32_t hostUpdateControllerData(void *controllerData, int32_t size){
+int32_t simifUpdateControllerData(void *controllerData, int32_t size){
 
 	uint8_t *src, *dst;
 
@@ -101,7 +101,7 @@ int32_t hostUpdateControllerData(void *controllerData, int32_t size){
 	return 0;
 }
 //-----------------------------------------------------------------------------
-void hostApplyControl(void){
+void simifApplyControl(void){
 
 	uint8_t *src, *dst;
 	uint32_t k;

@@ -1,12 +1,12 @@
 /*
- * host.h
+ * simif.h
  *
  *  Created on: 12.05.2023
  *      Author: LRS
  */
 
-#ifndef HOST_H_
-#define HOST_H_
+#ifndef SIMULATIONINTERFACE_H_
+#define SIMULATIONINTERFACE_H_
 
 //=============================================================================
 /*-------------------------------- Includes ---------------------------------*/
@@ -27,7 +27,7 @@
 //=============================================================================
 //-----------------------------------------------------------------------------
 /**
- * @brief Initializes the host.
+ * @brief Initializes the simulation interface.
  *
  * @param meas Pointer to buffer holding measurement data in the simulation.
  * @param simData Pointer to buffer holding simulation data in the simulation.
@@ -35,7 +35,7 @@
  * @param controllerData Pointer to buffer holding controller data in the
  * 						 simulation.
  */
-void hostInitialize(
+void simifInitialize(
 		void *meas, void *simData,
 		void *control, void *controllerData
 		);
@@ -46,7 +46,7 @@ void hostInitialize(
  * The data stored in the meas and simData buffers are internally copied to the
  * measurements and simulation data structures.
  */
-void hostUpdateSimulation(void);
+void simifUpdateSimulation(void);
 //-----------------------------------------------------------------------------
 /**
  * @brief Gets measurements.
@@ -58,7 +58,7 @@ void hostUpdateSimulation(void);
  * 			   measurement data structure.
  * @return The size of the measurement data structure, in bytes.
  */
-int32_t hostGetMeasurements(void **meas);
+int32_t simifGetMeasurements(void **meas);
 //-----------------------------------------------------------------------------
 /**
  * @brief Gets (additional) simulation data.
@@ -70,7 +70,7 @@ int32_t hostGetMeasurements(void **meas);
  * 			   measurement data structure.
  * @return The size of the measurement data structure, in bytes.
  */
-int32_t hostGetSimData(void **simData);
+int32_t ctlrifGetSimData(void **simData);
 //-----------------------------------------------------------------------------
 /**
  * @brief Updates the control data.
@@ -81,7 +81,7 @@ int32_t hostGetSimData(void **simData);
  * @param size Size of the control data, in bytes.
  * @return Always returns 0.
  */
-int32_t hostUpdateControl(void *control, int32_t size);
+int32_t ctlrifUpdateControl(void *control, int32_t size);
 //-----------------------------------------------------------------------------
 /**
  * @brief Updates the controller data.
@@ -92,13 +92,13 @@ int32_t hostUpdateControl(void *control, int32_t size);
  * @param size Size of the controller data, in bytes.
  * @return Always returns 0.
  */
-int32_t hostUpdateControllerData(void *controllerData, int32_t size);
+int32_t ctlrifUpdateControllerData(void *controllerData, int32_t size);
 //-----------------------------------------------------------------------------
 /**
  * @brief Applies control and controller data to the simulation.
  */
-void hostApplyControl(void);
+void ctlrifApplyControl(void);
 //-----------------------------------------------------------------------------
 //=============================================================================
 
-#endif /* HOST_H_ */
+#endif /* SIMULATIONINTERFACE_H_ */

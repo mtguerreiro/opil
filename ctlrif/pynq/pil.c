@@ -8,9 +8,8 @@
 //=============================================================================
 /*-------------------------------- Includes ---------------------------------*/
 //=============================================================================
-#include "target/target.h"
-#include "pil.h"
-
+#include <ctlrif/ctlrif.h>
+#include <ctlrif/pynq/pil.h>
 #include "FreeRTOS.h"
 #include "task.h"
 
@@ -69,8 +68,8 @@ static void pilInitialize(void){
 	if( targetCommPynqInitialize() != 0 )
 		vTaskDelay(2000 / portTICK_PERIOD_MS);
 
-	/* Initializes target */
-	targetInitialize(invcontrolInitialize, invcontrol);
+	/* Initializes controller interface */
+	ctlrifInitialize(invcontrolInitialize, invcontrol);
 
 	/* Initializes opil */
 	opiltargetCommConfig_t comm;
@@ -81,14 +80,14 @@ static void pilInitialize(void){
 	comm.sendData = targetCommPynqSockSendData;
 	comm.receiveData = targetCommPynqSockReceiveData;
 
-	control.updateMeas = targetUpdateMeasurements;
-	control.updateSimData = targetUpdateSimData;
+	control.updateMeas = ctlrifUpdateMeasurements;
+	control.updateSimData = ctlrifUpdateSimData;
 
-	control.initControl = targetInitializeControl;
-	control.runControl = targetRunControl;
+	control.initControl = ctlrifInitializeControl;
+	control.runControl = ctlrifRunControl;
 
-	control.getControl = targetGetControl;
-	control.getControllerData = targetGetControllerData;
+	control.getControl = ctlrifGetControl;
+	control.getControllerData = ctlrifGetControllerData;
 
 	opiltargetInitialize(&comm, &control);
 }

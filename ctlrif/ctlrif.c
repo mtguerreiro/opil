@@ -1,5 +1,5 @@
 /*
- * target.c
+ * ctlrif.c
  *
  *  Created on: 8 de mai de 2023
  *      Author: LRS
@@ -8,8 +8,7 @@
 //=============================================================================
 /*-------------------------------- Includes ---------------------------------*/
 //=============================================================================
-#include "target.h"
-
+#include <ctlrif/ctlrif.h>
 #include "invcontrol.h"
 //=============================================================================
 
@@ -27,23 +26,23 @@ static stypesSimData_t xtSimData;
 static stypesControl_t xtControl;
 static stypesControllerData_t xtControllerData;
 
-static targetControlInit_t xcontrolInit = 0;
-static targetControlRun_t xcontrolRun = 0;
+static ctlrifControlInit_t xcontrolInit = 0;
+static ctlrifControlRun_t xcontrolRun = 0;
 //=============================================================================
 
 //=============================================================================
 /*-------------------------------- Functions --------------------------------*/
 //=============================================================================
 //-----------------------------------------------------------------------------
-void targetInitialize(
-		targetControlInit_t controlInit, targetControlRun_t controlRun
+void ctlrifInitialize(
+		ctlrifControlInit_t controlInit, ctlrifControlRun_t controlRun
 		){
 
 	xcontrolInit = controlInit;
 	xcontrolRun = controlRun;
 }
 //-----------------------------------------------------------------------------
-int32_t targetUpdateMeasurements(void *meas, int32_t size){
+int32_t ctlrifUpdateMeasurements(void *meas, int32_t size){
 
 	uint8_t *src, *dst;
 
@@ -55,7 +54,7 @@ int32_t targetUpdateMeasurements(void *meas, int32_t size){
 	return 0;
 }
 //-----------------------------------------------------------------------------
-int32_t targetUpdateSimData(void *simData, int32_t size){
+int32_t ctlrifUpdateSimData(void *simData, int32_t size){
 
 	uint8_t *src, *dst;
 
@@ -67,25 +66,25 @@ int32_t targetUpdateSimData(void *simData, int32_t size){
 	return 0;
 }
 //-----------------------------------------------------------------------------
-void targetInitializeControl(void){
+void ctlrifInitializeControl(void){
 
 	if( xcontrolInit ) xcontrolInit();
 }
 //-----------------------------------------------------------------------------
-void targetRunControl(void){
+void ctlrifRunControl(void){
 
 	if( xcontrolRun )
 		xcontrolRun(&xtMeasurements, &xtSimData, &xtControl, &xtControllerData);
 }
 //-----------------------------------------------------------------------------
-int32_t targetGetControl(void **control){
+int32_t ctlrifGetControl(void **control){
 
 	*control = (void *)( &xtControl );
 
 	return sizeof(stypesControl_t);
 }
 //-----------------------------------------------------------------------------
-int32_t targetGetControllerData(void **controllerData){
+int32_t ctlrifGetControllerData(void **controllerData){
 
 	*controllerData = (void *)( &xtControllerData );
 

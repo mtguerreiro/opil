@@ -5,8 +5,8 @@
  *      Author: LRS
  */
 
-#ifndef TARGET_H_
-#define TARGET_H_
+#ifndef CONTROLLERINTERFACE_H_
+#define CONTROLLERINTERFACE_H_
 
 //=============================================================================
 /*-------------------------------- Includes ---------------------------------*/
@@ -20,8 +20,8 @@
 //=============================================================================
 /*------------------------------- Definitions -------------------------------*/
 //=============================================================================
-typedef void (*targetControlInit_t)(void);
-typedef void (*targetControlRun_t)(
+typedef void (*ctlrifControlInit_t)(void);
+typedef void (*ctlrifControlRun_t)(
 		stypesMeasurements_t *meas,
 		stypesSimData_t *simData,
 		stypesControl_t *control,
@@ -34,10 +34,10 @@ typedef void (*targetControlRun_t)(
 //=============================================================================
 //-----------------------------------------------------------------------------
 /**
- * @brief Initializes the target.
+ * @brief Initializes the controller interface.
  */
-void targetInitialize(
-		targetControlInit_t controlInit, targetControlRun_t controlRun
+void ctlrifInitialize(
+		ctlrifControlInit_t controlInit, ctlrifControlRun_t controlRun
 		);
 //-----------------------------------------------------------------------------
 /**
@@ -49,7 +49,7 @@ void targetInitialize(
  * @param size Size of the measurements data, in bytes.
  * @return Always returns 0.
  */
-int32_t targetUpdateMeasurements(void *meas, int32_t size);
+int32_t ctlrifUpdateMeasurements(void *meas, int32_t size);
 //-----------------------------------------------------------------------------
 /**
  * @brief Updates simulation data.
@@ -60,14 +60,14 @@ int32_t targetUpdateMeasurements(void *meas, int32_t size);
  * @param size Size of the simulation data, in bytes.
  * @return Always returns 0.
  */
-int32_t targetUpdateSimData(void *simData, int32_t size);
+int32_t ctlrifUpdateSimData(void *simData, int32_t size);
 //-----------------------------------------------------------------------------
-void targetInitializeControl(void);
+void ctlrifInitializeControl(void);
 //-----------------------------------------------------------------------------
 /**
  * @brief Runs the control algorithm.
  */
-void targetRunControl(void);
+void ctlrifRunControl(void);
 //-----------------------------------------------------------------------------
 /**
  * @brief Gets control data.
@@ -78,7 +78,7 @@ void targetRunControl(void);
  * 			      control data structure.
  * @return The size of the control data structure, in bytes.
  */
-int32_t targetGetControl(void **control);
+int32_t ctlrifGetControl(void **control);
 //-----------------------------------------------------------------------------
 /**
  * @brief Gets controller data.
@@ -90,8 +90,8 @@ int32_t targetGetControl(void **control);
  * 			             controller data structure.
  * @return The size of the control data structure, in bytes.
  */
-int32_t targetGetControllerData(void **controllerData);
+int32_t ctlrifGetControllerData(void **controllerData);
 //-----------------------------------------------------------------------------
 //=============================================================================
 
-#endif /* TARGET_H_ */
+#endif /* CONTROLLERINTERFACE_H_ */
