@@ -70,7 +70,7 @@ int32_t simifGetMeasurements(void **meas);
  * 			   measurement data structure.
  * @return The size of the measurement data structure, in bytes.
  */
-int32_t ctlrifGetSimData(void **simData);
+int32_t simifGetSimData(void **simData);
 //-----------------------------------------------------------------------------
 /**
  * @brief Updates the control data.
@@ -81,7 +81,7 @@ int32_t ctlrifGetSimData(void **simData);
  * @param size Size of the control data, in bytes.
  * @return Always returns 0.
  */
-int32_t ctlrifUpdateControl(void *control, int32_t size);
+int32_t simifUpdateControl(void *control, int32_t size);
 //-----------------------------------------------------------------------------
 /**
  * @brief Updates the controller data.
@@ -92,12 +92,12 @@ int32_t ctlrifUpdateControl(void *control, int32_t size);
  * @param size Size of the controller data, in bytes.
  * @return Always returns 0.
  */
-int32_t ctlrifUpdateControllerData(void *controllerData, int32_t size);
+int32_t simifUpdateControllerData(void *controllerData, int32_t size);
 //-----------------------------------------------------------------------------
 /**
  * @brief Applies control and controller data to the simulation.
  */
-void ctlrifApplyControl(void);
+void simifApplyControl(void);
 //-----------------------------------------------------------------------------
 //=============================================================================
 
