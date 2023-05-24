@@ -5,8 +5,8 @@
  *      Author: LRS
  */
 
-#ifndef S_TYPES_H_
-#define S_TYPES_H_
+#ifndef S_TYPES_MMC_H_
+#define S_TYPES_MMC_H_
 
 //=============================================================================
 /*-------------------------------- Includes ---------------------------------*/
@@ -14,34 +14,28 @@
 #include "stdint.h"
 #include "stddef.h"
 
-//#include "stypesMmc.h"
 //=============================================================================
 
 //=============================================================================
 /*------------------------------- Definitions -------------------------------*/
 //=============================================================================
-typedef struct{
-	float i[7];
-	float v[4];
-}stypesMeasurements_t;
-
-typedef struct{
-	float P;
-	float Q;
-}stypesSimData_t;
-
-typedef struct{
-	float m[6];
-}stypesControl_t;
-
-typedef struct{
-	float t_exec;
-}stypesControllerData_t;
+//typedef struct{
+//	float i[7];
+//	float v[4];
+//}stypesMeasurementsMmc_t;
 //
-//typedef stypesMeasurementsMmc_t 	stypesMeasurements_t;
-//typedef stypesSimDataMmc_t 			stypesSimData_t;
-//typedef stypesControlMmc_t 			stypesControl_t;
-//typedef stypesControllerDataMmc_t 	stypesControllerData_t;
+//typedef struct{
+//	float P;
+//	float Q;
+//}stypesSimDataMmc_t;
+//
+//typedef struct{
+//	float m[6];
+//}stypesControlMmc_t;
+//
+//typedef struct{
+//	float t_exec;
+//}stypesControllerDataMmc_t;
 //=============================================================================
 
-#endif /* S_TYPES_H_ */
+#endif /* S_TYPES_MMC_H_ */

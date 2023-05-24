@@ -8,8 +8,9 @@
 //=============================================================================
 /*-------------------------------- Includes ---------------------------------*/
 //=============================================================================
-#include <ctlrif/ctlrif.h>
-#include "invcontrol.h"
+#include "ctlrif/ctlrif.h"
+
+
 //=============================================================================
 
 //=============================================================================
@@ -74,7 +75,12 @@ void ctlrifInitializeControl(void){
 void ctlrifRunControl(void){
 
 	if( xcontrolRun )
-		xcontrolRun(&xtMeasurements, &xtSimData, &xtControl, &xtControllerData);
+		xcontrolRun(
+				&xtMeasurements,
+				&xtSimData,
+				&xtControl,
+				&xtControllerData
+				);
 }
 //-----------------------------------------------------------------------------
 int32_t ctlrifGetControl(void **control){
