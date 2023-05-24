@@ -10,7 +10,7 @@
 //=============================================================================
 #include "ctlrif/ctlrif.h"
 
-
+#include "config/stypes.h"
 //=============================================================================
 
 //=============================================================================
@@ -76,10 +76,10 @@ void ctlrifRunControl(void){
 
 	if( xcontrolRun )
 		xcontrolRun(
-				&xtMeasurements,
-				&xtSimData,
-				&xtControl,
-				&xtControllerData
+				(void *)&xtMeasurements,
+				(void *)&xtSimData,
+				(void *)&xtControl,
+				(void *)&xtControllerData
 				);
 }
 //-----------------------------------------------------------------------------

@@ -14,7 +14,6 @@
 #include "stdint.h"
 #include "stddef.h"
 
-#include "config/stypes.h"
 //=============================================================================
 
 //=============================================================================
@@ -22,10 +21,10 @@
 //=============================================================================
 typedef void (*ctlrifControlInit_t)(void);
 typedef void (*ctlrifControlRun_t)(
-		stypesMeasurements_t *meas,
-		stypesSimData_t *simData,
-		stypesControl_t *control,
-		stypesControllerData_t *controllerData
+		void *meas,
+		void *simData,
+		void *control,
+		void *controllerData
 		);
 //=============================================================================
 

@@ -19,23 +19,23 @@
 //=============================================================================
 /*------------------------------- Definitions -------------------------------*/
 //=============================================================================
-//typedef struct{
-//	float i[7];
-//	float v[4];
-//}stypesMeasurementsMmc_t;
-//
-//typedef struct{
-//	float P;
-//	float Q;
-//}stypesSimDataMmc_t;
-//
-//typedef struct{
-//	float m[6];
-//}stypesControlMmc_t;
-//
-//typedef struct{
-//	float t_exec;
-//}stypesControllerDataMmc_t;
+typedef struct{
+	float i[7];
+	float v[4];
+}stypesMeasurementsMmc_t;
+
+typedef struct{
+	float P;
+	float Q;
+}stypesSimDataMmc_t;
+
+typedef struct{
+	float m[6];
+}stypesControlMmc_t;
+
+typedef struct{
+	float t_exec;
+}stypesControllerDataMmc_t;
 //=============================================================================
 
 #endif /* S_TYPES_MMC_H_ */
