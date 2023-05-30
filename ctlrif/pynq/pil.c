@@ -18,8 +18,8 @@
 #include "comm/pynq/targetCommPynqSock.h"
 
 /* Control */
-//#include "invcontrol.h"
-#include "mmccontrol.h"
+#include "invcontrol.h"
+//#include "mmccontrol.h"
 //=============================================================================
 
 //=============================================================================
@@ -70,8 +70,8 @@ static void pilInitialize(void){
 		vTaskDelay(2000 / portTICK_PERIOD_MS);
 
 	/* Initializes controller interface */
-	//ctlrifInitialize(invcontrolInitialize, invcontrol);
-	ctlrifInitialize(mmccontrolInitialize, mmccontrol);
+	ctlrifInitialize(invcontrolInitialize, invcontrol);
+	//ctlrifInitialize(mmccontrolInitialize, mmccontrol);
 
 	/* Initializes opil */
 	opiltargetCommConfig_t comm;

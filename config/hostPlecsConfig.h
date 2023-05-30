@@ -8,15 +8,7 @@
 #ifndef HOST_PLECS_CONFIG_H_
 #define HOST_PLECS_CONFIG_H_
 
-#include "hostPlecsConfigMmc.h"
-
-//=============================================================================
-/*------------------------------- Definitions -------------------------------*/
-//=============================================================================
-#define HOST_PLECS_CONFIG_MEAS_SIZE				HOST_PLECS_CONFIG_MMC_MEAS_SIZE
-#define HOST_PLECS_CONFIG_SIM_DATA_SIZE			HOST_PLECS_CONFIG_MMC_SIM_DATA_SIZE
-#define HOST_PLECS_CONFIG_CONTROL_SIZE			HOST_PLECS_CONFIG_MMC_CONTROL_SIZE
-#define HOST_PLECS_CONFIG_CONTROLLER_SIZE		HOST_PLECS_CONFIG_MMC_CONTROLLER_SIZE
-//=============================================================================
+//#include "hostPlecsConfigMmc.h"
+#include "hostPlecsConfigInv.h"
 
 #endif /* HOST_PLECS_CONFIG_H_ */

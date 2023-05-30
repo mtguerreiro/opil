@@ -11,10 +11,10 @@
 //=============================================================================
 /*------------------------------- Definitions -------------------------------*/
 //=============================================================================
-#define HOST_PLECS_CONFIG_MMC_MEAS_SIZE				11
-#define HOST_PLECS_CONFIG_MMC_SIM_DATA_SIZE			2
-#define HOST_PLECS_CONFIG_MMC_CONTROL_SIZE			6
-#define HOST_PLECS_CONFIG_MMC_CONTROLLER_SIZE		1
+#define HOST_PLECS_CONFIG_MEAS_SIZE				11
+#define HOST_PLECS_CONFIG_SIM_DATA_SIZE			2
+#define HOST_PLECS_CONFIG_CONTROL_SIZE			6
+#define HOST_PLECS_CONFIG_CONTROLLER_SIZE		1
 //=============================================================================
 
 #endif /* HOST_PLECS_CONFIG_MMC_H_ */
