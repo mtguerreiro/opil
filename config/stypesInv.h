@@ -35,23 +35,23 @@ typedef struct{
 	float vg_ab_k;
 	float vg_ac_k;
 	float vg_bc_k;
-}stypesMeasurementsInv_t;
+}stypesMeasurements_t;
 
 typedef struct{
 	float ig_d_ref;
 	float ig_q_ref;
-}stypesSimDataInv_t;
+}stypesSimData_t;
 
 typedef struct{
 	float ud;
 	float uq;
-}stypesControlInv_t;
+}stypesControl_t;
 
 typedef struct{
 	float theta;
 	float t_exec;
 	float niters;
-}stypesControllerDataInv_t;
+}stypesControllerData_t;
 //=============================================================================
 
 #endif /* S_TYPES_INV_H_ */

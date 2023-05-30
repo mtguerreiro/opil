@@ -22,20 +22,20 @@
 typedef struct{
 	float i[7];
 	float v[4];
-}stypesMeasurementsMmc_t;
+}stypesMeasurements_t;
 
 typedef struct{
 	float P;
 	float Q;
-}stypesSimDataMmc_t;
+}stypesSimData_t;
 
 typedef struct{
 	float m[6];
-}stypesControlMmc_t;
+}stypesControl_t;
 
 typedef struct{
 	float t_exec;
-}stypesControllerDataMmc_t;
+}stypesControllerData_t;
 //=============================================================================
 
 #endif /* S_TYPES_MMC_H_ */

@@ -14,16 +14,9 @@
 #include "stdint.h"
 #include "stddef.h"
 
-#include "stypesMmc.h"
-//=============================================================================
-
-//=============================================================================
-/*------------------------------- Definitions -------------------------------*/
-//=============================================================================
-typedef stypesMeasurementsMmc_t 	stypesMeasurements_t;
-typedef stypesSimDataMmc_t 			stypesSimData_t;
-typedef stypesControlMmc_t 			stypesControl_t;
-typedef stypesControllerDataMmc_t 	stypesControllerData_t;
+//#include "stypesMmc.h"
+#include "stypesInv.h"
+//#include "stypesBuck.h"
 //=============================================================================
 
 #endif /* S_TYPES_H_ */
