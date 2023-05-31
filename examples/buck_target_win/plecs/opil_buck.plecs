@@ -26,7 +26,7 @@ Plecs {
   InitializationCommands "%% Controller\n%k1 =  0.09135158730158727\n%k2 =  0."
 "04897447089947079\n%kr =  0.12477629629629618\n\nk1 =  0.24279100529100536\nk"
 "2 =  0.22154174015285136\nkr =  0.33185185185185195\n\nf_sw = 100e3 %Hz\n\n%%"
-" Simulation time\nt_sim = 10e-3\n\n%% Sampling and control \nfs = 10e3\nts = "
+" Simulation time\nt_sim = 10e-3\n\n%% Sampling and control \nfs = 20e3\nts = "
 "1 / fs\n\n%% ADCs\nmax_i        = 8              %% A\nmin_i        = 0      "
 "        %% A\nrange_i      = max_i - min_i\nadc_res_i    = 4095\nadc_gain_i  "
 " = adc_res_i/range_i\n\nmax_v_out        = 35             %% V\nmin_v_out    "
@@ -842,7 +842,7 @@ Plecs {
               Direction     right
             }
             Schematic {
-              Location      [1105, 376; 1591, 674]
+              Location      [961, 31; 1919, 992]
               ZoomFactor    1
               SliderPosition [0, 0]
               ShowBrowser   off
@@ -984,6 +984,20 @@ Plecs {
                   Show          off
                 }
               }
+              Component {
+                Type          ZeroOrderHold
+                Name          "Zero-Order\nHold"
+                Show          on
+                Position      [290, 75]
+                Direction     right
+                Flipped       off
+                LabelPosition south
+                Parameter {
+                  Variable      "Ts"
+                  Value         "ts"
+                  Show          off
+                }
+              }
               Connection {
                 Type          Signal
                 SrcComponent  "Constant1"
@@ -1016,6 +1030,13 @@ Plecs {
               Connection {
                 Type          Signal
                 SrcComponent  "Quantizer"
+                SrcTerminal   2
+                DstComponent  "Zero-Order\nHold"
+                DstTerminal   1
+              }
+              Connection {
+                Type          Signal
+                SrcComponent  "Zero-Order\nHold"
                 SrcTerminal   2
                 DstComponent  "Out1"
                 DstTerminal   1
@@ -1191,6 +1212,20 @@ Plecs {
                   Show          off
                 }
               }
+              Component {
+                Type          ZeroOrderHold
+                Name          "Zero-Order\nHold"
+                Show          on
+                Position      [290, 75]
+                Direction     right
+                Flipped       off
+                LabelPosition south
+                Parameter {
+                  Variable      "Ts"
+                  Value         "ts"
+                  Show          off
+                }
+              }
               Connection {
                 Type          Signal
                 SrcComponent  "Constant1"
@@ -1223,6 +1258,13 @@ Plecs {
               Connection {
                 Type          Signal
                 SrcComponent  "Quantizer"
+                SrcTerminal   2
+                DstComponent  "Zero-Order\nHold"
+                DstTerminal   1
+              }
+              Connection {
+                Type          Signal
+                SrcComponent  "Zero-Order\nHold"
                 SrcTerminal   2
                 DstComponent  "Out1"
                 DstTerminal   1
@@ -1308,7 +1350,7 @@ Plecs {
             }
             Parameter {
               Variable      "Ts"
-              Value         "0"
+              Value         "ts"
               Show          off
             }
             Parameter {
@@ -1357,12 +1399,6 @@ Plecs {
 "float simdata[CONFIG_SIM_DATA_SIZE];\n"
 "float control[CONFIG_CONTROL_SIZE];\n"
 "float controllerdata[CONFIG_CONTROLLER_SIZE];\n"
-"\n"
-"/* NO effect\n"
-"#define buck_i     (InputSignal(0,0))\n"
-"#define buck_v_out (InputSignal(0,1))\n"
-"#define buck_V_ref (InputSignal(0,2))\n"
-"*/\n"
 "\n"
 "int32_t conn;\n"
               Show          off
@@ -1625,6 +1661,20 @@ Plecs {
               }
             }
           }
+          Component {
+            Type          ZeroOrderHold
+            Name          "Zero-Order\nHold"
+            Show          on
+            Position      [665, 180]
+            Direction     right
+            Flipped       off
+            LabelPosition south
+            Parameter {
+              Variable      "Ts"
+              Value         "ts"
+              Show          off
+            }
+          }
           Connection {
             Type          Signal
             SrcComponent  "Constant"
@@ -1702,6 +1752,13 @@ Plecs {
           Connection {
             Type          Signal
             SrcComponent  "Demux"
+            SrcTerminal   2
+            DstComponent  "Zero-Order\nHold"
+            DstTerminal   1
+          }
+          Connection {
+            Type          Signal
+            SrcComponent  "Zero-Order\nHold"
             SrcTerminal   2
             Points        [705, 180]
             Branch {
@@ -2179,4 +2236,4 @@ Plecs {
     }
   }
 }
-DemoSignature "aQye21d8qXHqEk4weBCsUVcBHfQCg3l49ZOst9kWglo="
+DemoSignature "6TFfk8HDV7gVanyViPaloEthOtkIHuzJOAgxl+j/9N4="
