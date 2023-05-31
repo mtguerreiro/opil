@@ -15,7 +15,8 @@
 #include "stddef.h"
 
 //#include "stypesMmc.h"
-#include "stypesInv.h"
+//#include "stypesInv.h"
+#include "stypesBuck.h"
 //=============================================================================
 
 #endif /* S_TYPES_H_ */

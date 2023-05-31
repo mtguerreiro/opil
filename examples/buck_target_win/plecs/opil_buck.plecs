@@ -3,7 +3,7 @@ Plecs {
   Version       "4.7"
   CircuitModel  "ContStateSpace"
   StartTime     "0.0"
-  TimeSpan      "0.1"
+  TimeSpan      "t_sim"
   Timeout       ""
   Solver        "auto"
   MaxStep       "1e-6"
@@ -23,14 +23,15 @@ Plecs {
   MaxConsecutiveZCs "1000"
   AlgebraicLoopWithStateMachineMsg "2"
   AssertionAction "1"
-  InitializationCommands "%% Controller\nK1 =  0.09135158730158727\nK2 =  0.04"
-"897447089947079\nKr =  0.12477629629629618\n\n%% Simulation time\nt_sim = 100"
-"e-3\n\n%% Sampling and control \nfs = 10e3\nts = 1 / fs\n\n%% ADCs\nmax_i    "
-"    = 8              %% A\nmin_i        = 0              %% A\nrange_i      ="
-" max_i - min_i\nadc_res_i    = 4095\nadc_gain_i   = adc_res_i/range_i\n\nmax_"
-"v_out        = 35             %% V\nmin_v_out        = 0              %% V\nr"
-"ange_v_out      = max_v_out - min_v_out\nadc_res_v_out    = 4095\nadc_gain_v_"
-"out   = adc_res_v_out/range_v_out\n"
+  InitializationCommands "%% Controller\n%k1 =  0.09135158730158727\n%k2 =  0."
+"04897447089947079\n%kr =  0.12477629629629618\n\nk1 =  0.24279100529100536\nk"
+"2 =  0.22154174015285136\nkr =  0.33185185185185195\n\nf_sw = 100e3 %Hz\n\n%%"
+" Simulation time\nt_sim = 10e-3\n\n%% Sampling and control \nfs = 10e3\nts = "
+"1 / fs\n\n%% ADCs\nmax_i        = 8              %% A\nmin_i        = 0      "
+"        %% A\nrange_i      = max_i - min_i\nadc_res_i    = 4095\nadc_gain_i  "
+" = adc_res_i/range_i\n\nmax_v_out        = 35             %% V\nmin_v_out    "
+"    = 0              %% V\nrange_v_out      = max_v_out - min_v_out\nadc_res_"
+"v_out    = 4095\nadc_gain_v_out   = adc_res_v_out/range_v_out\n"
   InitialState  "1"
   SystemState   ""
   TaskingMode   "1"
@@ -87,17 +88,17 @@ Plecs {
       Direction     up
       Flipped       off
       LabelPosition south
-      Location      [961, 31; 1919, 1051]
+      Location      [1, 31; 959, 1021]
       State         "AAAA/wAAAAD9AAAAAgAAAAEAAAC0AAABifwCAAAAA/sAAAAQAFoAbwBvA"
 "G0AQQByAGUAYQAAAAAA/////wAAAIQA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwIAAAHgAA"
 "ABaAAAAMgAAAB4+wAAAAwAVAByAGEAYwBlAHMAAAAAAAAAAYkAAABmAP///wAAAAMAAAJgAAAAXfw"
-"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAAAAAmAAAABQAP///wAAA74AAAPhAAAA"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAAAAAmAAAABQAP///wAAA74AAAPDAAAA"
 "BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
 "AAAAA=="
       SavedViews    "AAAAAgAAAAA="
-      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAA"
-"QAAAGQAAAAJAAAAZAAAAAgAAABkAAAABwAAAGQAAAAGAAAAZAAAAAUAAABkAAAABAAAAGQAAAADAA"
-"AAZAAAAAIAAABkAAAA0wAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAACvAAA"
+      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAC"
+"QAAAGQAAAAGAAAAZAAAAAcAAABkAAAABAAAAGQAAAAFAAAAZAAAAAIAAABkAAAAAwAAAGQAAAABAA"
+"AAZAAAAAgAAABkAAAA0wAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAACvAAA"
 "AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
 "AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
 "AAkAAAAAQAAAAAAAAPoAAAAACQ="
@@ -108,7 +109,7 @@ Plecs {
       TimeRange     "0"
       ScrollingMode "1"
       SingleTimeAxis "1"
-      Open          "0"
+      Open          "1"
       Ts            "-1"
       SampleLimit   "0"
       XAxisLabel    "Time / s"
@@ -197,7 +198,7 @@ Plecs {
       LabelPosition west
       Parameter {
         Variable      "V"
-        Value         "15"
+        Value         "12"
         Show          on
       }
     }
@@ -211,7 +212,7 @@ Plecs {
       LabelPosition west
       Parameter {
         Variable      "R"
-        Value         "10"
+        Value         "9"
         Show          on
       }
     }
@@ -311,7 +312,7 @@ Plecs {
       LabelPosition north
       Parameter {
         Variable      "L"
-        Value         "47e-6"
+        Value         "100e-6"
         Show          on
       }
       Parameter {
@@ -470,7 +471,7 @@ Plecs {
             LabelPosition north
             Parameter {
               Variable      "K"
-              Value         "K2"
+              Value         "k2"
               Show          off
             }
             Parameter {
@@ -518,7 +519,7 @@ Plecs {
             LabelPosition north
             Parameter {
               Variable      "K"
-              Value         "K1"
+              Value         "k1"
               Show          off
             }
             Parameter {
@@ -566,7 +567,7 @@ Plecs {
             LabelPosition south
             Parameter {
               Variable      "K"
-              Value         "Kr"
+              Value         "kr"
               Show          off
             }
             Parameter {
@@ -664,7 +665,7 @@ Plecs {
       }
       Parameter {
         Variable      "fc"
-        Value         "200000"
+        Value         "f_sw"
         Show          off
       }
       Parameter {
@@ -742,7 +743,7 @@ Plecs {
             Type          Input
             Name          "V_ref"
             Show          on
-            Position      [135, 170]
+            Position      [140, 285]
             Direction     right
             Flipped       off
             LabelPosition south
@@ -761,7 +762,7 @@ Plecs {
             Type          Input
             Name          "i"
             Show          on
-            Position      [135, 215]
+            Position      [140, 170]
             Direction     right
             Flipped       off
             LabelPosition south
@@ -780,7 +781,7 @@ Plecs {
             Type          Input
             Name          "v_out"
             Show          on
-            Position      [135, 275]
+            Position      [140, 230]
             Direction     right
             Flipped       off
             LabelPosition south
@@ -799,7 +800,7 @@ Plecs {
             Type          Output
             Name          "D"
             Show          on
-            Position      [800, 175]
+            Position      [800, 180]
             Direction     right
             Flipped       off
             LabelPosition south
@@ -818,7 +819,7 @@ Plecs {
             Type          Subsystem
             Name          "ADC\ni"
             Show          on
-            Position      [260, 215]
+            Position      [265, 170]
             Direction     up
             Flipped       off
             LabelPosition none
@@ -936,7 +937,7 @@ Plecs {
                 }
                 Parameter {
                   Variable      "Inputs"
-                  Value         "|++"
+                  Value         "|+-"
                   Show          off
                 }
                 Parameter {
@@ -983,20 +984,6 @@ Plecs {
                   Show          off
                 }
               }
-              Component {
-                Type          ZeroOrderHold
-                Name          "Zero-Order\nHold"
-                Show          on
-                Position      [290, 75]
-                Direction     right
-                Flipped       off
-                LabelPosition south
-                Parameter {
-                  Variable      "Ts"
-                  Value         "ts"
-                  Show          off
-                }
-              }
               Connection {
                 Type          Signal
                 SrcComponent  "Constant1"
@@ -1030,13 +1017,6 @@ Plecs {
                 Type          Signal
                 SrcComponent  "Quantizer"
                 SrcTerminal   2
-                DstComponent  "Zero-Order\nHold"
-                DstTerminal   1
-              }
-              Connection {
-                Type          Signal
-                SrcComponent  "Zero-Order\nHold"
-                SrcTerminal   2
                 DstComponent  "Out1"
                 DstTerminal   1
               }
@@ -1046,7 +1026,7 @@ Plecs {
             Type          Subsystem
             Name          "ADC\nv_out"
             Show          on
-            Position      [260, 275]
+            Position      [265, 230]
             Direction     up
             Flipped       off
             LabelPosition none
@@ -1164,7 +1144,7 @@ Plecs {
                 }
                 Parameter {
                   Variable      "Inputs"
-                  Value         "|++"
+                  Value         "|+-"
                   Show          off
                 }
                 Parameter {
@@ -1211,20 +1191,6 @@ Plecs {
                   Show          off
                 }
               }
-              Component {
-                Type          ZeroOrderHold
-                Name          "Zero-Order\nHold"
-                Show          on
-                Position      [290, 75]
-                Direction     right
-                Flipped       off
-                LabelPosition south
-                Parameter {
-                  Variable      "Ts"
-                  Value         "ts"
-                  Show          off
-                }
-              }
               Connection {
                 Type          Signal
                 SrcComponent  "Constant1"
@@ -1257,13 +1223,6 @@ Plecs {
               Connection {
                 Type          Signal
                 SrcComponent  "Quantizer"
-                SrcTerminal   2
-                DstComponent  "Zero-Order\nHold"
-                DstTerminal   1
-              }
-              Connection {
-                Type          Signal
-                SrcComponent  "Zero-Order\nHold"
                 SrcTerminal   2
                 DstComponent  "Out1"
                 DstTerminal   1
@@ -1319,12 +1278,12 @@ Plecs {
             }
             Parameter {
               Variable      "NumInputs"
-              Value         "1"
+              Value         "4"
               Show          off
             }
             Parameter {
               Variable      "NumOutputs"
-              Value         "1"
+              Value         "2"
               Show          off
             }
             Parameter {
@@ -1376,50 +1335,94 @@ Plecs {
               Variable      "Declarations"
               Value         "#include \"stdint.h\"\n"
 "\n"
-"#include \"comm/win/hostCommWinSock.h\"\n"
-"#include \"comm/win/hostCommWinSock.c\"\n"
+"#include \"..\\..\\..\\config\\stypesBuck.h\"\n"
 "\n"
-"#include \"host/plecs/hostPlecs.h\"\n"
-"#include \"host/plecs/hostPlecs.c\"\n"
+"#include \"..\\..\\..\\comm\\win\\hostCommWinSock.h\"\n"
+"#include \"..\\..\\..\\comm\\win\\hostCommWinSock.c\"\n"
 "\n"
-"#include \"opilhost.c\"\n"
+"#include \"..\\..\\..\\config\\hostPlecsConfigBuck.h\"\n"
+"#include \"..\\..\\..\\simif\\simif.h\"\n"
+"#include \"..\\..\\..\\simif\\simif.c\"\n"
 "\n"
-"float measurements[12];\n"
-"float simdata[2];\n"
-"float control[2];\n"
-"float controllerdata[3];\n"
+"#include \"..\\..\\..\\opilhost.c\"\n"
+"\n"
+"#define CONFIG_MEAS_SIZE        HOST_PLECS_CONFIG_MEAS_SIZE\n"
+"#define CONFIG_SIM_DATA_SIZE    HOST_PLECS_CONFIG_SIM_DATA_SIZE\n"
+"#define CONFIG_CONTROL_SIZE     HOST_PLECS_CONFIG_CONTROL_SIZE\n"
+"#define CONFIG_CONTROLLER_SIZE  HOST_PLECS_CONFIG_CONTROLLER_SIZE\n"
+"\n"
+"#define enable (InputSignal(0, CONFIG_MEAS_SIZE+CONFIG_SIM_DATA_SIZE))\n"
+"\n"
+"float measurements[CONFIG_MEAS_SIZE];\n"
+"float simdata[CONFIG_SIM_DATA_SIZE];\n"
+"float control[CONFIG_CONTROL_SIZE];\n"
+"float controllerdata[CONFIG_CONTROLLER_SIZE];\n"
+"\n"
+"/* NO effect\n"
+"#define buck_i     (InputSignal(0,0))\n"
+"#define buck_v_out (InputSignal(0,1))\n"
+"#define buck_V_ref (InputSignal(0,2))\n"
+"*/\n"
 "\n"
 "int32_t conn;\n"
-"\n"
-"#define ii_a_k \tInputSignal(0, 0)\n"
-"#define ii_b_k \tInputSignal(0, 1)\n"
-"#define ii_c_k \tInputSignal(0, 2)\n"
-"\n"
-"#define ig_a_k \tInputSignal(0, 3)\n"
-"#define ig_b_k \tInputSignal(0, 4)\n"
-"#define ig_c_k \tInputSignal(0, 5)\n"
-"\n"
-"#define vc_a_k \tInputSignal(0, 6)\n"
-"#define vc_b_k \tInputSignal(0, 7)\n"
-"#define vc_c_k \tInputSignal(0, 8)\n"
-"\n"
-"#define vg_ab_k \tInputSignal(0, 9)\n"
-"#define vg_ac_k \tInputSignal(0, 10)\n"
-"\n"
-"#define vg_bc_k \tInputSignal(0, 11)\n"
-"\n"
-"#define ig_d_ref\tInputSignal(0, 12)\n"
-"#define ig_q_ref\tInputSignal(0, 13)"
               Show          off
             }
             Parameter {
               Variable      "StartFcn"
-              Value         ""
+              Value         "\tsimifInitialize((void *)( &measurements ), (voi"
+"d *)( &simdata ), (void *)( &control ), (void *)( &controllerdata ));\n"
+"\n"
+"\topilhostCommConfig_t comm;\n"
+"\topilhostSimConfig_t sim;\n"
+"\n"
+"\tcomm.openConn = hostCommWinSockOpenConnection;\n"
+"\tcomm.closeConn = hostCommWinSockCloseConnection;\n"
+"\tcomm.sendData = hostCommWinSockSendData;\n"
+"\tcomm.receiveData = hostCommWinSockReceiveData;\n"
+"\n"
+"\tsim.updateSim = simifUpdateSimulation;\n"
+"\tsim.getMeas = simifGetMeasurements;\n"
+"\tsim.getSimData = simifGetSimData;\n"
+"\tsim.updateControl = simifUpdateControl;\n"
+"\tsim.updateControllerData = simifUpdateControllerData;\n"
+"\tsim.applyControl = simifApplyControl;\n"
+"\n"
+"\topilhostInitialize(&comm, &sim);\n"
+"\n"
+"\tconn = opilhostConnectToTarget(0);"
               Show          off
             }
             Parameter {
               Variable      "OutputFcn"
-              Value         ""
+              Value         "if( conn == 0 )\n"
+"{\n"
+"\tint k;\n"
+"\n"
+"\tfor(k = 0; k < CONFIG_MEAS_SIZE; k++)\n"
+"\t{\n"
+"\t\tmeasurements[k] = (float)InputSignal(0, k);\n"
+"\t}\n"
+"\n"
+"\tfor(k = CONFIG_MEAS_SIZE; k < (CONFIG_MEAS_SIZE + CONFIG_SIM_DATA_SIZE); k+"
+"+)\n"
+"\t{\n"
+"\t\tsimdata[k-CONFIG_MEAS_SIZE] = (float)InputSignal(0, k);\n"
+"\t}\n"
+"\n"
+"\topilhostExchangeDataTarget();\n"
+"\n"
+"\tfor(k = 0; k < CONFIG_CONTROL_SIZE; k++)\n"
+"\t{\n"
+"\t\tOutputSignal(0, k) = control[k];\n"
+"\t}\n"
+"\n"
+"\tfor(k = CONFIG_CONTROL_SIZE; k < (CONFIG_CONTROL_SIZE + CONFIG_CONTROLLER_S"
+"IZE); k++)\n"
+"\t{\n"
+"\t\tOutputSignal(0, k) = controllerdata[k - CONFIG_CONTROL_SIZE];\n"
+"\t}\n"
+"\t\n"
+"}\n"
               Show          off
             }
             Parameter {
@@ -1434,7 +1437,7 @@ Plecs {
             }
             Parameter {
               Variable      "TerminateFcn"
-              Value         ""
+              Value         "if( conn == 0 ) opilhostDisconnectFromTarget(0);"
               Show          off
             }
             Parameter {
@@ -1458,25 +1461,6 @@ Plecs {
             LabelPosition south
             Parameter {
               Variable      "Width"
-              Value         "3"
-              Show          off
-            }
-          }
-          Component {
-            Type          Goto
-            Name          "Goto47"
-            Show          off
-            Position      [660, 220]
-            Direction     right
-            Flipped       off
-            LabelPosition south
-            Parameter {
-              Variable      "Tag"
-              Value         "n_iters"
-              Show          off
-            }
-            Parameter {
-              Variable      "Visibility"
               Value         "2"
               Show          off
             }
@@ -1485,7 +1469,7 @@ Plecs {
             Type          Goto
             Name          "Goto48"
             Show          off
-            Position      [660, 200]
+            Position      [740, 200]
             Direction     right
             Flipped       off
             LabelPosition south
@@ -1504,7 +1488,7 @@ Plecs {
             Type          Goto
             Name          "Goto49"
             Show          off
-            Position      [660, 150]
+            Position      [740, 155]
             Direction     right
             Flipped       off
             LabelPosition south
@@ -1523,21 +1507,21 @@ Plecs {
             Type          Scope
             Name          "Scope"
             Show          on
-            Position      [670, 290]
+            Position      [750, 290]
             Direction     up
             Flipped       off
             LabelPosition south
-            Location      [640, 276; 990, 503]
+            Location      [0, 23; 1920, 1012]
             State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFo"
 "AbwBvAG0AQQByAGUAYQAAAAAA/////wAAADQA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAA"
 "AAAA/////wAAAGYA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABmAP///wAAAAMAAAAAA"
-"AAAAPwBAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAP////8AAABQAP///wAAAV4AAA"
-"DIAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8"
+"AAAAPwBAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAP////8AAABQAP///wAAB4AAAA"
+"PCAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8"
 "AAAAAAAAAAA=="
             SavedViews    "AAAAAgAAAAA="
             HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAA"
-"JAAAACQAAAGQAAAABAAAAZAAAAAIAAABkAAAAAwAAAGQAAAAEAAAAZAAAAAUAAABkAAAABgAAAGQA"
-"AAAHAAAAZAAAAAgAAABkAAAAZAAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAA"
+"JAAAABQAAAGQAAAAGAAAAZAAAAAcAAABkAAAAAQAAAGQAAAACAAAAZAAAAAMAAABkAAAACAAAAGQA"
+"AAAJAAAAZAAAAAQAAABkAAAAZAAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAA"
 "ABAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAA"
 "AAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQA"
 "AAAAAAAAkAAAAAQAAAAAAAAPoAAAAACQ="
@@ -1588,17 +1572,17 @@ Plecs {
             Direction     up
             Flipped       off
             LabelPosition south
-            Location      [640, 276; 990, 503]
+            Location      [640, 276; 990, 513]
             State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFo"
 "AbwBvAG0AQQByAGUAYQAAAAAA/////wAAADQA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAA"
 "AAAA/////wAAAGYA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABmAP///wAAAAMAAAAAA"
 "AAAAPwBAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAP////8AAABQAP///wAAAV4AAA"
-"DIAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8"
+"DSAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8"
 "AAAAAAAAAAA=="
             SavedViews    "AAAAAgAAAAA="
             HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAA"
-"JAAAACQAAAGQAAAABAAAAZAAAAAIAAABkAAAAAwAAAGQAAAAEAAAAZAAAAAUAAABkAAAABgAAAGQA"
-"AAAHAAAAZAAAAAgAAABkAAAAZAAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAA"
+"JAAAACQAAAGQAAAACAAAAZAAAAAMAAABkAAAAAQAAAGQAAAAGAAAAZAAAAAcAAABkAAAABAAAAGQA"
+"AAAFAAAAZAAAAAgAAABkAAAAZAAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAA"
 "ABAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAA"
 "AAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQA"
 "AAAAAAAAkAAAAAQAAAAAAAAPoAAAAACQ="
@@ -1640,104 +1624,6 @@ Plecs {
                 BaselineValue 0
               }
             }
-          }
-          Component {
-            Type          Scope
-            Name          "Scope2"
-            Show          on
-            Position      [670, 415]
-            Direction     up
-            Flipped       off
-            LabelPosition south
-            Location      [640, 276; 990, 503]
-            State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFo"
-"AbwBvAG0AQQByAGUAYQAAAAAA/////wAAADQA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAA"
-"AAAA/////wAAAGYA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABmAP///wAAAAMAAAAAA"
-"AAAAPwBAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAP////8AAABQAP///wAAAV4AAA"
-"DIAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8"
-"AAAAAAAAAAA=="
-            SavedViews    "AAAAAgAAAAA="
-            HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAA"
-"JAAAACQAAAGQAAAABAAAAZAAAAAIAAABkAAAAAwAAAGQAAAAEAAAAZAAAAAUAAABkAAAABgAAAGQA"
-"AAAHAAAAZAAAAAgAAABkAAAAZAAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAA"
-"ABAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAA"
-"AAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQA"
-"AAAAAAAAkAAAAAQAAAAAAAAPoAAAAACQ="
-            PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-            Axes          "1"
-            TimeRange     "0.0"
-            ScrollingMode "1"
-            SingleTimeAxis "1"
-            Open          "0"
-            Ts            "-1"
-            SampleLimit   "0"
-            XAxisLabel    "Time / s"
-            ShowLegend    "1"
-            Axis {
-              Name          ""
-              AutoScale     1
-              MinValue      0
-              MaxValue      1
-              Signals       {}
-              SignalTypes   [ ]
-              Untangle      0
-              KeepBaseline  off
-              BaselineValue 0
-            }
-            Fourier {
-              SingleXAxis       on
-              AxisLabel         "Frequency / Hz"
-              Scaling           0
-              PhaseDisplay      0
-              ShowFourierLegend off
-              Axis {
-                Name          ""
-                AutoScale     1
-                MinValue      0
-                MaxValue      1
-                Signals       {}
-                Untangle      0
-                KeepBaseline  off
-                BaselineValue 0
-              }
-            }
-          }
-          Connection {
-            Type          Signal
-            SrcComponent  "i"
-            SrcTerminal   1
-            DstComponent  "ADC\ni"
-            DstTerminal   1
-          }
-          Connection {
-            Type          Signal
-            SrcComponent  "v_out"
-            SrcTerminal   1
-            DstComponent  "ADC\nv_out"
-            DstTerminal   1
-          }
-          Connection {
-            Type          Signal
-            SrcComponent  "V_ref"
-            SrcTerminal   1
-            DstComponent  "Mux"
-            DstTerminal   2
-          }
-          Connection {
-            Type          Signal
-            SrcComponent  "ADC\ni"
-            SrcTerminal   2
-            Points        [330, 215; 330, 180]
-            DstComponent  "Mux"
-            DstTerminal   3
-          }
-          Connection {
-            Type          Signal
-            SrcComponent  "ADC\nv_out"
-            SrcTerminal   2
-            Points        [350, 275; 350, 190]
-            DstComponent  "Mux"
-            DstTerminal   4
           }
           Connection {
             Type          Signal
@@ -1764,23 +1650,8 @@ Plecs {
           Connection {
             Type          Signal
             SrcComponent  "Demux"
-            SrcTerminal   4
-            Points        [605, 195; 605, 220]
-            Branch {
-              DstComponent  "Goto47"
-              DstTerminal   1
-            }
-            Branch {
-              Points        [605, 415]
-              DstComponent  "Scope2"
-              DstTerminal   1
-            }
-          }
-          Connection {
-            Type          Signal
-            SrcComponent  "Demux"
             SrcTerminal   3
-            Points        [615, 185; 615, 200]
+            Points        [615, 190; 615, 200]
             Branch {
               DstComponent  "Goto48"
               DstTerminal   1
@@ -1793,16 +1664,53 @@ Plecs {
           }
           Connection {
             Type          Signal
+            SrcComponent  "V_ref"
+            SrcTerminal   1
+            Points        [340, 285; 340, 190]
+            DstComponent  "Mux"
+            DstTerminal   4
+          }
+          Connection {
+            Type          Signal
+            SrcComponent  "i"
+            SrcTerminal   1
+            DstComponent  "ADC\ni"
+            DstTerminal   1
+          }
+          Connection {
+            Type          Signal
+            SrcComponent  "ADC\ni"
+            SrcTerminal   2
+            DstComponent  "Mux"
+            DstTerminal   2
+          }
+          Connection {
+            Type          Signal
+            SrcComponent  "v_out"
+            SrcTerminal   1
+            DstComponent  "ADC\nv_out"
+            DstTerminal   1
+          }
+          Connection {
+            Type          Signal
+            SrcComponent  "ADC\nv_out"
+            SrcTerminal   2
+            Points        [335, 230; 335, 180]
+            DstComponent  "Mux"
+            DstTerminal   3
+          }
+          Connection {
+            Type          Signal
             SrcComponent  "Demux"
             SrcTerminal   2
-            Points        [625, 175]
+            Points        [705, 180]
             Branch {
-              Points        [625, 150]
+              Points        [705, 155]
               DstComponent  "Goto49"
               DstTerminal   1
             }
             Branch {
-              Points        [625, 290]
+              Points        [705, 290]
               DstComponent  "Scope"
               DstTerminal   1
             }
@@ -2271,4 +2179,4 @@ Plecs {
     }
   }
 }
-DemoSignature "aEhBe7JYfuqTthtCpvz4eR4AiwynAxkAJMg+SOwdBn8="
+DemoSignature "aQye21d8qXHqEk4weBCsUVcBHfQCg3l49ZOst9kWglo="

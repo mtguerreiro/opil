@@ -9,6 +9,7 @@
 #define HOST_PLECS_CONFIG_H_
 
 //#include "hostPlecsConfigMmc.h"
-#include "hostPlecsConfigInv.h"
+//#include "hostPlecsConfigInv.h"
+#include "hostPlecsConfigBuck.h"
 
 #endif /* HOST_PLECS_CONFIG_H_ */
