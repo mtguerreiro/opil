@@ -66,12 +66,17 @@ void buckcontrolInitialize(void)
 //-----------------------------------------------------------------------------
 void buckcontrol
 (
-	stypesMeasurements_t *meas,
-	stypesSimData_t *simdata,
-	stypesControl_t *control,
-	stypesControllerData_t *controllerdata
+    void *ms,
+    void *sd,
+    void *ctl,
+    void *ctlrdata
 )
 {
+    stypesMeasurements_t *meas = (stypesMeasurements_t *)ms;
+	stypesSimData_t *simdata = (stypesSimData_t *)sd;
+	stypesControl_t *control = (stypesControl_t *)ctl;
+	stypesControllerData_t *controllerdata = (stypesControllerData_t *)ctlrdata;
+    
 	static float D = 0.0f;
 
 	D = simdata->V_ref*kr - k1*meas->i - min_i - k2*meas->v_out - min_v_out;

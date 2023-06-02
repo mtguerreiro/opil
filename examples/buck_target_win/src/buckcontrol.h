@@ -24,10 +24,10 @@
 void buckcontrolInitialize(void);
 //-----------------------------------------------------------------------------
 void buckcontrol(
-		stypesMeasurements_t *meas,
-		stypesSimData_t *simdata,
-		stypesControl_t *control,
-		stypesControllerData_t *controllerdata
+		void *ms,
+		void *sd,
+		void *ctl,
+		void *ctlrdata
 		);
 //-----------------------------------------------------------------------------
 //=============================================================================

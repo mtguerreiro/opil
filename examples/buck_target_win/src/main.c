@@ -2,7 +2,7 @@
  * main.c
  *
  *  Created on: 6 de mai de 2023
- *      Author: marco
+ *      Author: LRS
  */
 
 #include "stdlib.h"

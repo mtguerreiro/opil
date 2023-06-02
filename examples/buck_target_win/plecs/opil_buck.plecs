@@ -55,7 +55,7 @@ Plecs {
   ScriptsDialogGeometry "[764 395 446 243]"
   ScriptsDialogSplitterPos "100"
   Schematic {
-    Location      [961, 31; 1919, 992]
+    Location      [961, 31; 1919, 1000]
     ZoomFactor    1
     SliderPosition [0, 0]
     ShowBrowser   off
@@ -88,17 +88,17 @@ Plecs {
       Direction     up
       Flipped       off
       LabelPosition south
-      Location      [1, 31; 959, 1021]
+      Location      [1, 31; 959, 1031]
       State         "AAAA/wAAAAD9AAAAAgAAAAEAAAC0AAABifwCAAAAA/sAAAAQAFoAbwBvA"
 "G0AQQByAGUAYQAAAAAA/////wAAAIQA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwIAAAHgAA"
 "ABaAAAAMgAAAB4+wAAAAwAVAByAGEAYwBlAHMAAAAAAAAAAYkAAABmAP///wAAAAMAAAJgAAAAXfw"
-"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAAAAAmAAAABQAP///wAAA74AAAPDAAAA"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAAAAAmAAAABQAP///wAAA74AAAPNAAAA"
 "BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
 "AAAAA=="
       SavedViews    "AAAAAgAAAAA="
       HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAC"
-"QAAAGQAAAAGAAAAZAAAAAcAAABkAAAABAAAAGQAAAAFAAAAZAAAAAIAAABkAAAAAwAAAGQAAAABAA"
-"AAZAAAAAgAAABkAAAA0wAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAACvAAA"
+"AAAAGQAAAAJAAAAZAAAAAYAAABkAAAABwAAAGQAAAAEAAAAZAAAAAUAAABkAAAAAgAAAGQAAAADAA"
+"AAZAAAAAEAAABkAAAA0wAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAACvAAA"
 "AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
 "AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
 "AAkAAAAAQAAAAAAAAPoAAAAACQ="
@@ -731,7 +731,7 @@ Plecs {
         Direction     right
       }
       TerminalNames { "V_ref", "i", "v_out", "D" }
-      Location      [961, 31; 1919, 971]
+      Location      [961, 31; 1919, 979]
       ZoomFactor    1
       SliderPosition [0, 0]
       ShowBrowser   off
@@ -1405,27 +1405,27 @@ Plecs {
             }
             Parameter {
               Variable      "StartFcn"
-              Value         "\tsimifInitialize((void *)( &measurements ), (voi"
-"d *)( &simdata ), (void *)( &control ), (void *)( &controllerdata ));\n"
+              Value         "simifInitialize((void *)( &measurements ), (void "
+"*)( &simdata ), (void *)( &control ), (void *)( &controllerdata ));\n"
 "\n"
-"\topilhostCommConfig_t comm;\n"
-"\topilhostSimConfig_t sim;\n"
+"opilhostCommConfig_t comm;\n"
+"opilhostSimConfig_t sim;\n"
 "\n"
-"\tcomm.openConn = hostCommWinSockOpenConnection;\n"
-"\tcomm.closeConn = hostCommWinSockCloseConnection;\n"
-"\tcomm.sendData = hostCommWinSockSendData;\n"
-"\tcomm.receiveData = hostCommWinSockReceiveData;\n"
+"comm.openConn = hostCommWinSockOpenConnection;\n"
+"comm.closeConn = hostCommWinSockCloseConnection;\n"
+"comm.sendData = hostCommWinSockSendData;\n"
+"comm.receiveData = hostCommWinSockReceiveData;\n"
 "\n"
-"\tsim.updateSim = simifUpdateSimulation;\n"
-"\tsim.getMeas = simifGetMeasurements;\n"
-"\tsim.getSimData = simifGetSimData;\n"
-"\tsim.updateControl = simifUpdateControl;\n"
-"\tsim.updateControllerData = simifUpdateControllerData;\n"
-"\tsim.applyControl = simifApplyControl;\n"
+"sim.updateSim = simifUpdateSimulation;\n"
+"sim.getMeas = simifGetMeasurements;\n"
+"sim.getSimData = simifGetSimData;\n"
+"sim.updateControl = simifUpdateControl;\n"
+"sim.updateControllerData = simifUpdateControllerData;\n"
+"sim.applyControl = simifApplyControl;\n"
 "\n"
-"\topilhostInitialize(&comm, &sim);\n"
+"opilhostInitialize(&comm, &sim);\n"
 "\n"
-"\tconn = opilhostConnectToTarget(0);"
+"conn = opilhostConnectToTarget(0);"
               Show          off
             }
             Parameter {
@@ -1473,7 +1473,8 @@ Plecs {
             }
             Parameter {
               Variable      "TerminateFcn"
-              Value         "if( conn == 0 ) opilhostDisconnectFromTarget(0);"
+              Value         "if( conn == 0 ) {opilhostDisconnectFromTarget(0);"
+"}"
               Show          off
             }
             Parameter {
@@ -2236,4 +2237,4 @@ Plecs {
     }
   }
 }
-DemoSignature "6TFfk8HDV7gVanyViPaloEthOtkIHuzJOAgxl+j/9N4="
+DemoSignature "w/Sy4B8cKWSVsuoXPEAL6ckZDHZq2oLKHkqS4EkjltU="
